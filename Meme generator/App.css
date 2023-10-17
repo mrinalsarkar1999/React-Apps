@@ -1,0 +1,58 @@
+.logo {
+  display: flex;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+  background-color: blueviolet;
+  color: white;
+}
+.icon {
+  width: 50px;
+  padding: 10px 20px 10px 30px;
+}
+.header-project {
+  padding: 10px;
+  font-size: 1rem;
+  font-weight: 400;
+}
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.form {
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.inputs {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 2rem 0;
+}
+.input-field {
+  width: 40%;
+  padding: 20px;
+}
+.form-submit {
+  color: white;
+  background-color: blueviolet;
+  width: 100%;
+  padding: 20px;
+}
+.form-submit h3 {
+  margin: 0;
+}
+.memeImage {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  height: 360px;
+}
+.memeImage img {
+  max-height: 100%;
+}
