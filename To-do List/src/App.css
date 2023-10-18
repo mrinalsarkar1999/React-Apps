@@ -1,0 +1,71 @@
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.wrapper {
+  border-radius: 20px;
+  background-color: rgb(222, 184, 135);
+  height: 80vh;
+  width: 50vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.input-area {
+  width: 90%;
+  padding: 2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.input-text {
+  padding: 1em;
+  margin-right: 1em;
+  width: 100%;
+}
+.add-button {
+  height: 100%;
+}
+
+.items {
+  width: 90%;
+  padding: 1em;
+  margin-bottom: 3em;
+  border: solid rgb(211, 160, 94) 2px;
+  box-shadow: 0px 0px 9px 5px rgba(0, 0, 0, 0.637);
+  overflow-y: scroll;
+}
+
+.list-items {
+  width: 100%;
+  min-height: 5em;
+  margin-bottom: 1em;
+  display: flex;
+  padding: 0.5em;
+  background-color: rgb(211, 160, 94);
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 10px;
+}
+.list-items-text {
+  font-size: 1.5em;
+  font-weight: 500;
+  margin: 0;
+}
+
+.items::-webkit-scrollbar {
+  width: 1em;
+}
+
+.items::-webkit-scrollbar-track {
+  background: hsla(0, 0%, 100%, 0);
+  border-radius: 100vw;
+}
+
+.items::-webkit-scrollbar-thumb {
+  background: rgb(211, 160, 94);
+  border-radius: 100vw;
+}
