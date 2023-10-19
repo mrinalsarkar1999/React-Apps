@@ -13,14 +13,13 @@ export default function Body() {
       document.getElementById("input-text").value = "";
       setKey((prevKey) => prevKey + 1);
       //replace line breaks in text with space
-      const newString = value.replace(/\n/g, "");
-      const newValue = { index: key, text: newString };
+      const newValue = { index: key, text: value };
 
       //Check if the input text is not empty or does not have only spaces. If true we add user input text to the state array
-      if (newString !== "" && /\S/.test(newString)) {
+      if (value !== "" && /\S/.test(value)) {
         return [...prevListArray, newValue];
         //check if input straing has only spaces. If true we display an alert to enter something
-      } else if (!/\S/.test(newString)) {
+      } else if (!/\S/.test(value)) {
         window.alert("please enter something");
         return [...prevListArray];
       } else return [...prevListArray];
@@ -46,16 +45,23 @@ export default function Body() {
           Add item
         </button>
       </div>
-      <ul className="items">
-        {/* map through the state array and for each item create a list element
+      <div className="list-wrapper">
+        <ul className="items">
+          {/* map through the state array and for each item create a list element
         with the user input text and a remove button */}
-        {listArray.map((i) => (
-          <li key={i.index} className="list-items">
-            <p className="list-items-text">{i.text}</p>
-            <button onClick={() => removeItem(i.index)}>remove</button>
-          </li>
-        ))}
-      </ul>
+          {listArray.map((i) => (
+            <li key={i.index} className="list-items">
+              <p className="list-items-text">{`${i.text}`}</p>
+              <button
+                className="btn btn-danger delete"
+                onClick={() => removeItem(i.index)}
+              >
+                <i className="fas fa-trash delete-icons"></i>
+              </button>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
