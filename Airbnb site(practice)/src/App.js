@@ -12,10 +12,11 @@ export default function App() {
     />
   ));
   return (
-    <>
+    <div className = "wrapper">
       <Navbar />
       <Intro />
       <div className="cardContainer">{cArray}</div>
-    </>
+	  <Intro />
+    </div>
   );
 }
