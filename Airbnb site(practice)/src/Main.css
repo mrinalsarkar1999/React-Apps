@@ -1,8 +1,14 @@
-body {
-  margin: 0;
-  font-family: Inter;
+body{
+	margin: 0;
 }
 
+.wrapper {
+	margin: 0;
+	width : 100%;
+	height:100%;
+	background-color : #fbf5ee;
+	font-family: Inter;
+}
 /*Navigation bar CSS*/
 
 .nav-bar {
@@ -13,7 +19,7 @@ body {
   box-shadow: rgba(60, 64, 67, 0.3) 0px 5px 10px 0px;
 }
 .logo {
-  height: 3.5rem;
+  height: 10vh;
   padding: 1em 0 1em 2em;
 }
 
@@ -25,8 +31,8 @@ body {
   flex-direction: column;
 }
 .banner-image {
-  max-width: 100%;
-  height: 20rem;
+  max-width: 90%;
+  max-height : 60vh;
   margin: auto;
 }
 
@@ -53,6 +59,7 @@ body {
 
 .card-image {
   border-radius: 10px;
+  min-width: 100%;
   height: 240px;
 }
 
@@ -83,6 +90,7 @@ body {
 
 .cardContainer {
   display: flex;
+  overflow-y : hidden;
 }
 
 .card-badge {
@@ -93,4 +101,13 @@ body {
   padding: 0px 3px;
   border-radius: 2px;
   font-weight: bold;
+}
+
+@media only screen and (max-width : 480px) {
+	.wrapper{
+		background-color: #E9FFF3;
+	}
+	.logo{
+		height: 7vh;
+	}
 }
