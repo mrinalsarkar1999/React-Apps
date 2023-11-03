@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: rgb(183, 220, 255);
+  font-family: "Rubik", sans-serif;
+}
+
+.login-form {
+  background: #fff;
+  width: 500px;
+  margin: 65px auto;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  flex-direction: column;
+  border-radius: 4px;
+  box-shadow: 0 2px 25px rgba(0, 0, 0, 0.2);
+}
+.login-form h1 {
+  padding: 35px 35px 0 35px;
+  font-weight: 300;
+}
+.content {
+  padding: 35px;
+  text-align: center;
+}
+.input-field {
+  padding: 12px 5px;
+}
+.input-field input {
+  font-size: 16px;
+  display: block;
+  font-family: "Rubik", sans-serif;
+  width: 100%;
+  padding: 10px 1px;
+  border: 0;
+  border-bottom: 2px solid #979797;
+  outline: none;
+  transition: all 0.2s;
+}
+.input-field input::placeholder {
+  text-transform: uppercase;
+}
+.input-field input:focus {
+  border-color: #222;
+}
+.action {
+  display: flex;
+  flex-direction: row;
+}
+.action button {
+  font-size: 1.2rem;
+  width: 100%;
+  border: none;
+  padding: 18px;
+  font-family: "Rubik", sans-serif;
+  cursor: pointer;
+  text-transform: uppercase;
+  background: rgb(199, 210, 219);
+  color: black;
+  transition: all 0.3s;
+  font-weight: 400;
+}
+.action button:hover {
+  background: rgb(183, 220, 255);
+}
