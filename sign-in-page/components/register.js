@@ -22,6 +22,11 @@ export default function Register() {
   }
 
   function handleRegister() {
+	  const password = data.password;
+    const confirmPass = data.confirmPassword;
+
+    const pass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9@]{8,}$/;
+    console.log(/^[a-zA-Z0-9@]*$/.test(password));
 	  if(data.password === data.confirmPassword){
 		console.log("Succesfull")
 		flushSync(() => {
@@ -32,11 +37,11 @@ export default function Register() {
     myRef.current.scrollIntoView();
 	  }
 	  else{
-		  alert("Password does not match!");
 		  flushSync(()=>{
-			  setData({...data}, {password: ""},{confirmPassword : ""});
+			  setData({...data, password: "",confirmPassword : ""});
 		  });
 		  console.log(data);
+		  alert("Passwords do not match")
 	  }
     
   }
@@ -72,7 +77,7 @@ export default function Register() {
                 id="password"
                 name="password"
                 placeholder="Password"
-                autoComplete="new-password"
+				value = {data.password}
                 onChange={handleInput}
               />
             </div>
@@ -82,7 +87,7 @@ export default function Register() {
                 id="confirm-password"
                 name="confirmPassword"
                 placeholder="Confirm password"
-                autoComplete="new-password"
+				value = {data.confirmPassword}
                 onChange={handleInput}
               />
             </div>

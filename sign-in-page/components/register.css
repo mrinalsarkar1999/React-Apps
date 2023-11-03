@@ -10,9 +10,31 @@ body {
   font-family: "Rubik", sans-serif;
 }
 
+.register{
+	display: flex;
+    height: 100vh;
+    margin: auto;
+	align-items : center;
+}
+
+.login{
+	display: flex;
+    height: 100vh;
+    margin: auto;
+	align-items : center;
+}
+
+.login-wrapper{
+	display: flex;
+    height: 100vh;
+    margin: auto;
+	align-items : center;
+	width : 100%;
+}
+
 .login-form {
   background: #fff;
-  width: 500px;
+  width: 50%;
   margin: 65px auto;
   display: -webkit-box;
   display: flex;
@@ -69,4 +91,10 @@ body {
 }
 .action button:hover {
   background: rgb(183, 220, 255);
+}
+
+@media only screen and (max-width : 720px) {
+	.login-form{
+		width : 80%;
+	}
 }

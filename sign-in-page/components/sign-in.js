@@ -6,6 +6,7 @@ export default function SignIn() {
   const [isSignIn, setIsSignIn] = useState(false);
   const [isLogin, setIsLogin] = useState(false);
   const myRef = useRef(null);
+  const myRef1 = useRef(null);
 
   function handleSignIn(e) {
     flushSync(() => {
@@ -22,10 +23,11 @@ export default function SignIn() {
       if (e === "clicked") {
         console.log("Button clicked");
         setIsLogin({ isLogin: true });
+		setIsSignIn({ isShown: false });
       }
     });
 
-    myRef.current.scrollIntoView();
+    myRef1.current.scrollIntoView({ block: 'end',  behavior: 'smooth' });
   }
 
   return (
@@ -42,6 +44,17 @@ export default function SignIn() {
               code rawiews perfect for any developers who are serious about
               honing their skills.
             </p>
+          </div>
+		  <div className="why-us">
+            <h3>Why us?</h3>
+            <ul>
+              <li>Tutorials by industry experts</li>
+              <li>Peer and expert code review</li>
+              <li>Coding exercises</li>
+              <li>Access to our Github repo</li>
+              <li>Community forum</li>
+              <li>New videos every week</li>
+            </ul>
           </div>
           <div className="sign-in">
             <h3>Monthly subscription</h3>
@@ -65,23 +78,20 @@ export default function SignIn() {
               </button>
             </div>
           </div>
-          <div className="why-us">
-            <h3>Why us?</h3>
-            <ul>
-              <li>Tutorials by industry experts</li>
-              <li>Peer and expert code review</li>
-              <li>Coding exercises</li>
-              <li>Access to our Github repo</li>
-              <li>Community forum</li>
-              <li>New videos every week</li>
-            </ul>
-          </div>
+          
         </div>
       </div>
-      <div className="register" ref={myRef}>
-        {isSignIn && <Register />}
-      </div>
-      {isLogin && <LoginPage />}
+	   {isSignIn && 
+		<div className="register" ref={myRef}>
+			<Register />
+		</div>
+	  }
+      
+      {isLogin && 
+	  <div className="login" ref={myRef1}>
+			<LoginPage />
+		</div>
+	  }
     </>
   );
 }

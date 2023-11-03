@@ -39,7 +39,7 @@ export default function LoginPage() {
   }
 
   return (
-    <>
+    <div className = "login-wrapper">
       <div className="login-form">
         <h1>Log in</h1>
         <div className="content">
@@ -70,6 +70,6 @@ export default function LoginPage() {
         </div>
       </div>
       <div ref={myRef1}>{isVisible && <Welcome />}</div>
-    </>
+    </div>
   );
 }
