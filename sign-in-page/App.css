@@ -1,0 +1,70 @@
+body {
+  background-color: rgb(238, 238, 238);
+  margin: 0;
+}
+
+.wrapper {
+  max-width: 60%;
+  height: 100vh;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-container {
+  background-color: rgb(216, 236, 255);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25vw, 1fr));
+  width: 100%;
+  box-shadow: rgba(165, 165, 165, 0.253) 0 0 10px 5px;
+}
+
+.context {
+  grid-column: 1 / -1;
+  padding: 2rem;
+}
+.sign-in {
+  padding: 1rem;
+  background-color: rgb(152, 205, 255);
+}
+.button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button-link {
+  width: 60%;
+}
+.sign-in-button {
+  color: black;
+  background-color: rgb(212, 255, 253);
+  transition: 0.2s;
+  width: 100%;
+  margin-right: 1rem;
+}
+.sign-in-button:hover {
+  color: white;
+  background-color: rgb(96, 146, 150);
+  transform: scaleX(1.2);
+}
+
+.why-us {
+  padding: 1rem;
+  background-color: rgb(183, 220, 255);
+}
+
+h2,
+h3 {
+  color: rgb(51, 134, 88);
+}
+
+h4 {
+  color: rgb(99, 145, 46);
+}
+
+li {
+  list-style-type: none;
+}
