@@ -12,7 +12,7 @@ export default function SignIn() {
     flushSync(() => {
       if (e === "clicked") {
         console.log("Button clicked");
-        setIsSignIn({ isShown: true });
+        setIsSignIn({ isSignIn: true });
       }
     });
 
@@ -23,7 +23,9 @@ export default function SignIn() {
       if (e === "clicked") {
         console.log("Button clicked");
         setIsLogin({ isLogin: true });
-		setIsSignIn({ isShown: false });
+		if(isSignIn){
+			setIsSignIn({ isSignIn: false });
+		}
       }
     });
 
