@@ -2,3 +2,9 @@ A Recipe book app made with create-react-app that is connected to firebase.
 You can add new recipes and also view them in the site with delete and expand options.
 
 Recipes are dynamically updated as you keep adding and deleting them.
+
+important!! 
+Packages to be added : 
+  npm i bootstrap
+  npm i bootstrap-icons
+  npm i firebase
