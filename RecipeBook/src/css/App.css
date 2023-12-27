@@ -1,0 +1,276 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+.App {
+  font-size: 1.25rem;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+  position: relative;
+  z-index: 0;
+  color: white;
+}
+
+@keyframes scrollBg {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-1080px);
+  }
+}
+
+.scroll-bg {
+  height: 2160px;
+  width: 100%;
+  position: fixed;
+  background: url("https://andreivictor.ro/codepen/scroll-bg-animation-pinterest/bg_pasta_grid-3f880df3.jpg")
+    repeat-y;
+  background-size: 100% 1080px;
+  animation: scrollBg 50s linear infinite;
+  z-index: -1;
+}
+
+.navigation {
+  height: 10vh;
+  display: flex;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  width: 50vw;
+}
+.logo > img {
+  margin-left: 5rem;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  padding: 5px;
+  box-shadow: rgb(255, 255, 255) 0 0 10px 2px;
+  width: 50px;
+  transition: 0.5s;
+}
+
+.list {
+  font-weight: 500;
+  font-size: 1.2rem;
+  padding: 0;
+  margin: 0 0 0 auto;
+  list-style-type: none;
+  display: flex;
+  justify-content: space-evenly;
+  width: 40vw;
+}
+
+.list-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  transition: 0.2s;
+  box-shadow: #ffffff75 0px -2px 0px 0 inset;
+}
+
+.list-items:hover {
+  /* text-shadow: -3px -3px black, -2px -2px black, -1px -1px black, 2px 2px black; */
+  box-shadow: #ffffff75 0px -10vh 0px 0 inset;
+}
+
+.intro {
+  margin: 10vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 100%;
+  min-height: 60vh;
+}
+
+.start-button {
+  background-color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-weight: 600;
+  border: #ffffff 0 solid;
+  box-shadow: inset rgb(189, 189, 189) 0 0 0px 0px,
+    rgb(142, 142, 142) 5px 5px 0px 0;
+  /* box-shadow: white 0px 0px 0 0px inset, white 0px 0px 0 0px inset,
+    white 0px 0px 0 0px inset, white 0px 0px 0 0px inset,
+    rgb(31, 193, 27) 0px 0px 0 3px, rgb(255, 217, 19) 0px 0px 0 6px,
+    rgb(255, 156, 85) 0px 0px 0 9px, rgb(255, 85, 85) 0px 0px 0 12px; */
+  transition: 0.4s;
+}
+
+.start-button:hover {
+  /* box-shadow: rgb(31, 193, 27) 0px 0px 0 6px inset,
+    rgb(255, 217, 19) 0px 0px 0 12px inset,
+    rgb(255, 156, 85) 0px 0px 0 18px inset,
+    rgb(255, 85, 85) 0px 0px 0 30px inset, rgb(217, 217, 217) 5px 5px 10px 0; */
+  box-shadow: inset rgb(142, 142, 142) -60px -60px 0px 0px, white 5px 5px 0px 0;
+  transform: translate(0px, -5px);
+  color: white;
+}
+.start-button:active {
+  transform: translate(0px, 5px);
+  box-shadow: inset rgb(142, 142, 142) -150px -50px 0px 0px,
+    rgb(255, 255, 255) 0px 0px 0 0;
+}
+
+.footer {
+  color: rgb(185, 185, 185);
+  font-size: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 9vh;
+}
+
+.input-container {
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: grey 0 0 10px 2px;
+  border-radius: 20px;
+  width: 90%;
+  background-color: #ffffffdd;
+  height: 90vh;
+  margin: auto;
+}
+
+.cusine-heading {
+  padding: 10px 0;
+  height: 10%;
+  text-align: center;
+  width: 90%;
+  border-bottom: solid black 5px;
+}
+
+.cusine-input {
+  margin-top: 1rem;
+  width: 90%;
+  background-color: #ffffff;
+  border-radius: 20px 20px 0 0;
+  border: 0px solid rgb(255, 255, 255);
+  box-shadow: rgba(71, 71, 71, 0.534) 0 0px 10px 0;
+  padding: 10px;
+  font-size: 1.5rem;
+  outline: none;
+  transition: 0.4s;
+}
+.cusine-input:focus {
+  transform: scale(1.01);
+  box-shadow: rgb(71, 71, 71) 0 -10px 20px 0;
+}
+
+.input-area {
+  width: 90%;
+  height: 90%;
+  background-color: white;
+  border-radius: 0 0 20px 20px;
+  outline: none;
+  box-shadow: rgba(71, 71, 71, 0.534) 0 0px 10px 0;
+  border: 0px solid rgb(255, 255, 255);
+  transition: 0.4s;
+}
+.input-area:focus {
+  box-shadow: rgb(71, 71, 71) 0 0px 10px 0;
+  transform: scale(1.01);
+}
+
+.submit-recipe-button {
+  margin: 1rem 0;
+}
+
+.recipes {
+  margin: auto;
+  margin-top: 5vh;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #ffffff75;
+  box-shadow: grey 0 0 10px 0;
+  min-height: 90vh;
+  width: 90vw;
+}
+
+.recipe-heading {
+  margin: 2rem 0;
+}
+
+.recipe-window {
+  text-align: center;
+  margin: 2rem 0;
+  color: black;
+  background-color: white;
+  min-height: 20vh;
+  width: 86vw;
+}
+
+.card-banner {
+  width: 20vw;
+}
+
+.cardContainer {
+  min-height: 90vh;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: flex-start;
+}
+
+.cards {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 20%;
+  min-height: 10vw;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 20px;
+  flex-wrap: wrap;
+  color: black;
+  position: relative;
+}
+
+.card-delete {
+  position: absolute;
+  margin: 2px;
+  top: 0;
+  right: 0;
+  border: 0 solid black;
+  border-radius: 20px;
+  color: rgb(255, 0, 0);
+  display: block;
+}
+
+.card-expanded-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.socials {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirmation-container {
+  background-color: white;
+  left: 25%;
+  top: 10%;
+  position: fixed;
+  z-index: 1;
+  width: 50vw;
+  height: 50vh;
+  padding: 5rem;
+}
