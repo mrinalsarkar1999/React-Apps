@@ -1,0 +1,4 @@
+A Recipe book app made with react that is connected to firebase.
+You can add new recipes and also view them in the site with delete and expand options.
+
+Recipes are dynamically updated as you keep adding and deleting them.
