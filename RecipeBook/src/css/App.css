@@ -251,6 +251,42 @@
   display: block;
 }
 
+.confirmation-container {
+  background-color: white;
+  left: 25%;
+  top: 10%;
+  position: fixed;
+  z-index: 1;
+  width: 50vw;
+  height: 50vh;
+  padding: 5rem;
+}
+
+.card-edit {
+  position: absolute;
+  margin: 2px;
+  top: 0;
+  left: 0px;
+  border: 0 solid black;
+  border-radius: 20px;
+  color: rgb(255, 0, 0);
+  display: block;
+}
+
+.edit-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  left: 25%;
+  top: 10%;
+  position: fixed;
+  z-index: 1;
+  width: 50vw;
+  height: 50vh;
+  padding: 5rem;
+}
+
 .card-expanded-section {
   display: flex;
   flex-direction: column;
@@ -262,15 +298,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.confirmation-container {
-  background-color: white;
-  left: 25%;
-  top: 10%;
-  position: fixed;
-  z-index: 1;
-  width: 50vw;
-  height: 50vh;
-  padding: 5rem;
 }

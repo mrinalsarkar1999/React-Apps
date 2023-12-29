@@ -7,6 +7,8 @@ export default function Card(props) {
   var [isVisible, setIsVisible] = useState(false);
   var [isOpen, setIsOpen] = useState("Expand");
   var [isPopUp, setIsPopUp] = useState(false);
+  var [isEdit, setIsEdit] = useState(false);
+  var [editText, setEditText] = useState("");
   const firebaseConfig = {
     apiKey: "AIzaSyDFt1IJhEJMhJWVkwnm8S7eThX9kX04Xlg",
     authDomain: "recipes-41f7a.firebaseapp.com",
@@ -20,17 +22,23 @@ export default function Card(props) {
   // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
 
-  function handleOpen() {
-    setIsVisible((pre) => !pre);
-    setIsOpen((p) => (p === "Expand" ? "Collapse" : "Expand"));
-  }
-  function handlePopUp() {
-    setIsPopUp(false);
-  }
+  const updateUser = async (r) => {
+    r.preventDefault();
+    await app
+      .firestore()
+      .collection("todos")
+      .where("id", "==", props.id)
+      .get()
+      .then((querySnapshot) => {
+        querySnapshot.docs[0].ref.update({ recipeContent: editText });
+      })
+      .then(() => {
+        setIsEdit(false);
+        setEditText("");
+        alert("Recipe edited");
+      });
+  };
 
-  function handleDelete() {
-    setIsPopUp(true);
-  }
   function handleDeleteConfirmation(e) {
     e.preventDefault();
     app
@@ -54,27 +62,74 @@ export default function Card(props) {
           ></img>
         )}
       </>
-      <button className="card-delete" onClick={handleDelete}>
+      {/*Delete button*/}
+      <button className="card-delete" onClick={() => setIsPopUp(true)}>
         <i className="bi bi-trash2"></i>
       </button>
+
+      {/*Edit button*/}
+      <button
+        className="card-edit"
+        onClick={() => {
+          setIsEdit(true);
+          setEditText(props.recipeContent);
+        }}
+      >
+        <i className="bi bi-pencil-square"></i>
+      </button>
+
+      {/*Main Card data*/}
       <h4 className="card-title">{props.recipeName}</h4>
-      {/* <span className="price">
-        <small>{props.recipeContent}</small>
-      </span> */}
       <div className="card-expanded-section">
         {isVisible && (
           <div className="recipe-window">{props.recipeContent}</div>
         )}
-        <button className="btn btn-outline-info btn-sm " onClick={handleOpen}>
+        <button
+          className="btn btn-outline-info btn-sm "
+          onClick={() => {
+            setIsVisible((pre) => !pre);
+            setIsOpen((p) => (p === "Expand" ? "Collapse" : "Expand"));
+          }}
+        >
           {isOpen}
         </button>
       </div>
+
+      {/*Delete confirmation container */}
       {isPopUp && (
         <div className="confirmation-container">
           <h1>Are you sure you want to delete the Recipe?</h1>
           <>
             <button onClick={handleDeleteConfirmation}>Yes</button>
-            <button onClick={handlePopUp}>No</button>
+            <button onClick={() => setIsPopUp(false)}>No</button>
+          </>
+        </div>
+      )}
+
+      {/*Edit container*/}
+      {isEdit && (
+        <div className="edit-container">
+          <h3>{props.recipeName}</h3>
+          <>
+            <textarea
+              onChange={(e) => setEditText(e.target.value)}
+              value={editText}
+            ></textarea>
+            <button
+              className="btn btn-outline-info btn-sm"
+              onClick={updateUser}
+            >
+              Edit
+            </button>
+            <button
+              className="btn btn-outline-info btn-sm"
+              onClick={() => {
+                setIsEdit(false);
+                setEditText("");
+              }}
+            >
+              Cancel
+            </button>
           </>
         </div>
       )}

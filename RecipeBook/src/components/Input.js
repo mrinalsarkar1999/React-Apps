@@ -22,18 +22,6 @@ export default function Input() {
   // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
 
-  function handleChange(event) {
-    setCusine(event.target.value);
-  }
-
-  function handleContentChange(e) {
-    setRecipeText(e.target.value);
-  }
-
-  // function handleClose() {
-  //   setIsVisible(false);
-  // }
-
   function handleSubmit() {
     if (cusine !== "" && recipeText !== "") {
       const saveToFirebase = app.firestore();
@@ -59,13 +47,15 @@ export default function Input() {
         type="text"
         className="cusine-input"
         placeholder="Name of your dish"
-        onChange={handleChange}
+        onChange={(e) => setCusine(e.target.value)}
         value={cusine}
       ></input>
       <textarea
         className="input-area"
         placeholder="Ingredients"
-        onChange={handleContentChange}
+        onChange={(q) => {
+          setRecipeText(q.target.value);
+        }}
         value={recipeText}
       ></textarea>
       <button
@@ -74,12 +64,6 @@ export default function Input() {
       >
         Submit
       </button>
-      {/* <button
-        className="btn btn-outline-dark btn-lg submit-recipe-button"
-        onClick={handleClose}
-      >
-        Close
-      </button> */}
     </div>
   );
 }
