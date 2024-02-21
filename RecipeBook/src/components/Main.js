@@ -41,19 +41,6 @@ function Main() {
       getFromFirebase = app.firestore().collection("todos");
     }
 
-    // const q = query(getFromFirebase, where("recipeName", "==", "Fried rice"))
-    // const doc_refs = getDocs(q);
-    //
-    // const res = []
-    //
-    // doc_refs.forEach(country => {
-    //     res.push({
-    //         id: country.id,
-    //         ...country.data()
-    //     })
-    // })
-    // console.log(res);
-
     getFromFirebase.onSnapshot((querySnapShot) => {
       const saveFirebaseTodos = [];
       querySnapShot.forEach((doc) => {
