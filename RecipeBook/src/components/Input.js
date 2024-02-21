@@ -4,8 +4,9 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import { v4 as uuid } from "uuid";
 
-export default function Input() {
+export default function Input(data) {
   var [cusine, setCusine] = useState("");
+  var [recipeName , setRecipeName] = useState("");
   var [recipeText, setRecipeText] = useState("");
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -23,40 +24,56 @@ export default function Input() {
   const app = firebase.initializeApp(firebaseConfig);
 
   function handleSubmit() {
-    if (cusine !== "" && recipeText !== "") {
-      const saveToFirebase = app.firestore();
-      saveToFirebase.collection("todos").add({
-        id: uuid(),
-        recipeName: cusine,
-        recipeContent: recipeText,
-      });
-      setCusine("");
+    if(recipeName && recipeText !== ""){
+      if(recipeName && recipeText!== null){
+        const saveToFirebase = app.firestore();
+        saveToFirebase.collection("todos").add({
+          id: uuid(),
+          recipeName: recipeName,
+          recipeContent: recipeText,
+          cusine : cusine,
+        });
+        setRecipeName("");
+        setRecipeText("");
+        setCusine("");
+        alert("Recipe added");
+      }
+    }
+    else{
+      alert("None of the fields can be empty! Please provide an input.");
+      setRecipeName("");
       setRecipeText("");
-    } else {
-      alert("Empty fields cannot be added");
     }
   }
 
   return (
     <div className="input-container">
       <header className="cusine-heading">
-        <h1>{cusine}</h1>
+        <h1>{recipeName}</h1>
       </header>
 
       <input
         type="text"
         className="cusine-input"
         placeholder="Name of your dish"
-        onChange={(e) => setCusine(e.target.value)}
-        value={cusine}
+        value = {recipeName}
+        onChange={(a)=>{setRecipeName(a.target.value)}}
       ></input>
+
+      <label htmlFor="cusine">Choose a Cusine</label>
+  <select id="cusine" name="cusine" onChange={(e)=>{setCusine(e.target.value)}}>
+    <option>------</option>
+    <option value="Indian">Indian</option>
+    <option value="Korean">Korean</option>
+    <option value="Indo-Chinese-fusion">Indo-Chinese fusion</option>
+    <option value="Mexican">Mexican</option>
+    <option value="American">American</option>
+  </select>
       <textarea
         className="input-area"
         placeholder="Ingredients"
-        onChange={(q) => {
-          setRecipeText(q.target.value);
-        }}
-        value={recipeText}
+        value = {recipeText}
+        onChange={(b)=>{setRecipeText(b.target.value)}}
       ></textarea>
       <button
         className="btn btn-outline-dark btn-lg submit-recipe-button"

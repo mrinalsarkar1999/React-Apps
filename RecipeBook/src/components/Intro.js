@@ -27,7 +27,7 @@ export default function Intro() {
           Get Started
         </button>
       </div>
-      <div ref={ref}>{isVisible && <Input data={true}></Input>}</div>
+      <div ref={ref}>{isVisible && <Input></Input>}</div>
     </>
   );
 }

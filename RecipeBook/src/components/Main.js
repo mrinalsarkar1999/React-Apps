@@ -9,12 +9,11 @@ import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import { flushSync } from "react-dom";
 import Socials from "./Socials";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Main() {
   var [isVisible, setIsVisible] = useState(false);
   var [isSocial, setIsSocial] = useState(false);
+  var [isHovering,setIsHovering] = useState(false);
   const ref = useRef(null);
   const ref1 = useRef(null);
   const [items, setItems] = useState([]);
@@ -31,8 +30,30 @@ function Main() {
   // Initialize Firebase
   const app = firebase.initializeApp(firebaseConfig);
 
-  const getData = () => {
-    const getFromFirebase = app.firestore().collection("todos");
+  function getData(i){
+    let getFromFirebase;
+    console.log(i);
+    if(i!==null && i!==""){
+      console.log("Inside If")
+      getFromFirebase = app.firestore().collection("todos").where('cusine', '==', i);
+    }
+    else{
+      getFromFirebase = app.firestore().collection("todos");
+    }
+
+    // const q = query(getFromFirebase, where("recipeName", "==", "Fried rice"))
+    // const doc_refs = getDocs(q);
+    //
+    // const res = []
+    //
+    // doc_refs.forEach(country => {
+    //     res.push({
+    //         id: country.id,
+    //         ...country.data()
+    //     })
+    // })
+    // console.log(res);
+
     getFromFirebase.onSnapshot((querySnapShot) => {
       const saveFirebaseTodos = [];
       querySnapShot.forEach((doc) => {
@@ -44,12 +65,12 @@ function Main() {
     });
   };
 
-  function HandleRecipes(e) {
-    e.preventDefault();
+  const handleRecipes =(item) =>()=> {
     flushSync(() => {
       setIsVisible(true);
     });
-    getData();
+    console.log(item);
+    getData(item);
     ref.current.scrollIntoView();
   }
   function handleHome(e) {
@@ -69,7 +90,6 @@ function Main() {
 
   return (
     <div className="App">
-      <div className="scroll-bg"></div>
       <header className="App-header">
         <nav className="navigation">
           <div className="logo">
@@ -80,8 +100,21 @@ function Main() {
             <li className="list-items" onClick={handleHome}>
               Home
             </li>
-            <li className="list-items" onClick={HandleRecipes}>
-              recipes
+            <li className="list-items" onMouseOver={()=>{setIsHovering(true)}}
+          onMouseOut={()=>{setIsHovering(false)}}>recipes
+            {isHovering
+              && <div className="dropdown">
+              <div className="dropdown-content">
+              <ul>
+                <li onClick={handleRecipes("Indian")}>Indian</li>
+                <li onClick={handleRecipes("Korean")}>Korean</li>
+                <li onClick={handleRecipes("Indo-Chinese fusion")}>Indo-Chinese fusion</li>
+                <li onClick={handleRecipes("Mexican")}>Mexican</li>
+                <li onClick={handleRecipes("American")}>American</li>
+              </ul>
+              </div>
+            </div>
+          }
             </li>
             <li className="list-items" onClick={handleSocials}>
               Socials
