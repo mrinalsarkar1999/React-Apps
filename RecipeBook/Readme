@@ -2,9 +2,11 @@ A interactive Recipe book app made with create-react-app that is connected to fi
 
 1) View induvidual recipes that have their seperate cards.
 2) Expand the cards to see the details of your recipe
-3) Added new recipes
+3) Add new recipes
 4) Delete the recipes that you do not need
 5) Edit your recipes just in case you decide to add some extra flavor
+6) Every recipe is categorised by cuisines
+7) Search for recipes using cuisines
 
 Recipes are dynamically updated as you keep adding/delete/edit them.
 
@@ -14,5 +16,7 @@ Packages to be added :
   npm i bootstrap-icons
   npm i firebase
 
-Ps : I'll be adding additional field of cusine for all the recipes next so that they can be sorted and a new field of
-"collections" can be adde to page navigation bar.
+21/2/24 : Added the cuisine category for recipes and also a dropdown style nav so that user can search for a recipe 
+based on the cusine
+
+Ps : I'll be adding adding a search bar to look for recipes based on the recipe name in future update
