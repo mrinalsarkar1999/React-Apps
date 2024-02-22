@@ -91,6 +91,16 @@ body{
   display: block;
 }
 
+.search-input{
+  display: flex;
+  justify-content: flex-end;
+}
+
+.form-outline{
+  width: 40vw;
+  display: flex;
+  justify-content: flex-end;
+}
 
 .intro {
   margin: 10vh 0 10vh 0;
