@@ -29,7 +29,7 @@ export default function Input(data) {
         const saveToFirebase = app.firestore();
         saveToFirebase.collection("todos").add({
           id: uuid(),
-          recipeName: recipeName,
+          recipeName: recipeName.toLowerCase(),
           recipeContent: recipeText,
           cusine : cusine,
         });
@@ -65,7 +65,7 @@ export default function Input(data) {
     <option>------</option>
     <option value="Indian">Indian</option>
     <option value="Korean">Korean</option>
-    <option value="Indo-Chinese-fusion">Indo-Chinese fusion</option>
+    <option value="Indo-Chinese fusion">Indo-Chinese fusion</option>
     <option value="Mexican">Mexican</option>
     <option value="American">American</option>
   </select>

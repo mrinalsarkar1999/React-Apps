@@ -79,7 +79,7 @@ export default function Card(props) {
       </button>
 
       {/*Main Card data*/}
-      <h4 className="card-title">{props.recipeName}</h4>
+      <h4 className="card-title" style={{ textTransform: 'capitalize' }}>{props.recipeName}</h4>
       <div className="card-expanded-section">
         {isVisible && (
           <div className="recipe-window">{props.recipeContent}</div>

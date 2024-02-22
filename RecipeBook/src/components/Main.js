@@ -14,6 +14,7 @@ function Main() {
   var [isVisible, setIsVisible] = useState(false);
   var [isSocial, setIsSocial] = useState(false);
   var [isHovering,setIsHovering] = useState(false);
+  var [search,setSearch] = useState("");
   const ref = useRef(null);
   const ref1 = useRef(null);
   const [items, setItems] = useState([]);
@@ -32,9 +33,7 @@ function Main() {
 
   function getData(i){
     let getFromFirebase;
-    console.log(i);
     if(i!==null && i!==""){
-      console.log("Inside If")
       getFromFirebase = app.firestore().collection("todos").where('cusine', '==', i);
     }
     else{
@@ -52,11 +51,23 @@ function Main() {
     });
   };
 
+  function getSearchData(){
+    const getFromFirebase = app.firestore().collection("todos").where('recipeName', '==', search);
+    getFromFirebase.onSnapshot((querySnapShot) => {
+      const saveFirebaseTodos = [];
+      querySnapShot.forEach((doc) => {
+        saveFirebaseTodos.push(doc.data());
+      });
+      flushSync(() => {
+        setItems(saveFirebaseTodos);
+      });
+    });
+  }
+
   const handleRecipes =(item) =>()=> {
     flushSync(() => {
       setIsVisible(true);
     });
-    console.log(item);
     getData(item);
     ref.current.scrollIntoView();
   }
@@ -73,6 +84,13 @@ function Main() {
       setIsSocial(true);
     });
     ref1.current.scrollIntoView();
+  }
+  function handleSearch(){
+    flushSync(() => {
+      setIsVisible(true);
+    });
+    getSearchData(search);
+    ref.current.scrollIntoView();
   }
 
   return (
@@ -109,9 +127,18 @@ function Main() {
           </ul>
         </nav>
       </header>
+      <div className="search-input">
+        <div className="form-outline" data-mdb-input-init>
+          <input type="search" id="form1" className="form-control" onChange = {(e)=>{setSearch(e.target.value.toLowerCase())}}/>
+          <button type="button" className="btn btn-dark" onClick = {handleSearch}>
+            <i className="bi bi-search"></i>
+          </button>
+        </div>
+
+      </div>
       <Intro></Intro>
-      <div ref={ref}>{isVisible && <Recipes data={items}></Recipes>}</div>
-      <div ref={ref1}>{isSocial && <Socials></Socials>}</div>
+        <div ref={ref}>{isVisible && <Recipes data={items}></Recipes>}</div>
+        <div ref={ref1}>{isSocial && <Socials></Socials>}</div>
       <Footer></Footer>
     </div>
   );
