@@ -1,1 +1,0 @@
-All required images/icons
