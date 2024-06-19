@@ -1,3 +1,6 @@
+*Open below link to visit app deployed using netlify*
+https://mrinalsrecipebook.netlify.app/
+
 A interactive Recipe book app made with create-react-app that is connected to firebase.
 
 1) View induvidual recipes that have their seperate cards.
