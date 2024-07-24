@@ -11,6 +11,7 @@ function App() {
   const [url, setURL] = useState("");
 
   const [response, setResp] = useState([]);
+  const [filteredResponse, setFilteredResponse] = useState([]);
 
   useEffect(() => {
     // change name
@@ -21,6 +22,7 @@ function App() {
         if (!resp.data.Response) {
           console.log("failed");
           setResp([]);
+          setFilteredResponse([]);
           return;
         }
         // change to response
@@ -29,6 +31,7 @@ function App() {
           const resp1 = await resp.data.Search;
           flushSync(() => {
             setResp(resp1);
+            setFilteredResponse(resp1);
           });
           console.log(resp.data.Response);
           console.log("Inside If");
@@ -36,6 +39,8 @@ function App() {
         } else {
           setIsVis(false);
           alert("No records found");
+          setResp([]);
+          setFilteredResponse([]);
         }
       } catch (error) {
         console.log(error);
@@ -47,6 +52,21 @@ function App() {
 
   const handleChange = (e) => {
     setSearch(e.target.value);
+  };
+
+  const handleFilter = (event) => {
+    event.preventDefault();
+    const filterValue = event.target.value;
+    if (filterValue === "all") {
+      setResp(filteredResponse);
+      return;
+    }
+    console.log(filterValue);
+    const newList = filteredResponse.filter(
+      (movie) => movie.Type === filterValue
+    );
+    console.log(newList);
+    setResp(newList);
   };
 
   const handleSearch = (e) => {
@@ -70,12 +90,14 @@ function App() {
         </button>
       </form>
       {isVis && (
-        <select name="cars" id="cars">
-          <option value="volvo">All</option>
-          <option value="saab">Movie</option>
-          <option value="opel">Series</option>
-          <option value="audi">Game</option>
-        </select>
+        <div className="filter">
+          <select name="cars" id="cars" onChange={handleFilter}>
+            <option value="all">All</option>
+            <option value="movie">Movie</option>
+            <option value="series">Series</option>
+            <option value="game">Game</option>
+          </select>
+        </div>
       )}
 
       <section>
